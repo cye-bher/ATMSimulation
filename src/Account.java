@@ -7,8 +7,8 @@ public class Account {
         this.pin = pin;
     }
 
-    public boolean checkPin(String inputPin) {
-        return inputPin.equals(pin);
+    public boolean checkPin(String inputPin1) {
+        return inputPin1.equals(pin);
     }
 
     public double getBalance(){

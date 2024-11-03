@@ -1,15 +1,35 @@
 import java.util.Scanner;
 
 public class ATMSimulation {
+
+    public static void checkPin1(){
+
+    }
+
     public static void main(String[] args) {
         Account account = new Account(1000, "0018");
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter PIN: ");
-        String inputPin = scanner.nextLine();
+        int attempt = 0;
+        int maxAttempt = 3;
+        boolean accessGranted = false;
 
-        if (!account.checkPin(inputPin)) {
-            System.out.println("Incorrect PIN. Existing...");
+
+        while ( attempt < maxAttempt){
+            String inputPin = scanner.nextLine();
+
+            if (account.checkPin(inputPin)) {
+            accessGranted = true;
+            break;
+            }else {
+                attempt++;
+                if (attempt < maxAttempt) {
+                    System.out.println("Incorrect pin. Try again");
+                }
+            }
+        }if (!accessGranted){
+            System.out.println("Account locked. Existing...");
             return;
         }
 
